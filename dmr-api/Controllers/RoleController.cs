@@ -15,11 +15,9 @@ namespace DMR_API.Controllers
     public class RoleController : ControllerBase
     {
         private readonly IRoleService _RoleService;
-        private readonly ILogger<RoleController> _logger;
-        public RoleController(IRoleService RoleService, ILogger<RoleController> logger)
+        public RoleController(IRoleService RoleService)
         {
             _RoleService = RoleService;
-            _logger = logger;
         }
 
         [HttpGet]
@@ -28,6 +26,5 @@ namespace DMR_API.Controllers
             var role = await _RoleService.GetAllAsync();
             return Ok(role);
         }
-     
     }
 }

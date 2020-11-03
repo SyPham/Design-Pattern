@@ -167,7 +167,7 @@ namespace DMR_API
             services.AddScoped<IUserRoleRepository, UserRoleRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
 
-            // unit of work 
+            // unit of work
             services.AddScoped<IRepositoryFactory, UnitOfWork<DataContext>>();
             services.AddScoped<IUnitOfWork, UnitOfWork<DataContext>>();
             services.AddScoped<IUnitOfWork<DataContext>, UnitOfWork<DataContext>>();

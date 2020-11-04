@@ -19,7 +19,7 @@ namespace DMR_API._Services.Services
     {
 
         private readonly IRoleRepository _repoRole;
-        private readonly IUnitOfWork<DataContext> _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly MapperConfiguration _configMapper;
         public RoleService(IRoleRepository repoRole, IMapper mapper, MapperConfiguration configMapper)
@@ -29,7 +29,7 @@ namespace DMR_API._Services.Services
             _repoRole = repoRole;
 
         }
-        public RoleService(IUnitOfWork<DataContext> unitOfWork)
+        public RoleService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
 
@@ -83,7 +83,7 @@ namespace DMR_API._Services.Services
 
         public async Task<List<Role>> GetAllDto()
         {
-            var model =  await _repoRole.FindAll().OrderBy(x => x.ID).ToListAsync();
+            var model =  await _unitOfWork.GetRepository<Role>().FindAll().OrderBy(x => x.ID).ToListAsync();
             return model;
         }
     }

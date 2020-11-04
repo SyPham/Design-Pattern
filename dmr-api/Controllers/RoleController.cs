@@ -26,5 +26,11 @@ namespace DMR_API.Controllers
             var role = await _RoleService.GetAllAsync();
             return Ok(role);
         }
+        [HttpPost]
+        public async Task<IActionResult> Add([FromQuery]RoleDto roleDto)
+        {
+            var role = await _RoleService.Add(roleDto);
+            return Ok(role);
+        }
     }
 }
